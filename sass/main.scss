@@ -1,0 +1,109 @@
+@import "mixins";
+@import "colors";
+
+body {
+    font-size: 14px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 0.5fr 3fr;
+    grid-template-rows: 1fr 3fr 1fr;
+    grid-template-areas:    "logo perfil"
+                            "menu contenido"
+                            ". pie";
+    height: 100vh;
+    grid-gap: 8px;
+
+    .logo {
+        grid-area: logo;
+        @include flex_center;
+        img {
+            height: 100px;
+        }
+    }
+
+    .menu {
+        grid-area: menu;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-content: flex-start;
+        margin-top: 30px;
+
+        .menuOption {
+            width: 100%;
+            height: 30px;
+            @include flex_center;
+            border: $divider_color solid 1px;
+            border-radius: 5px;
+            background-color: $primary_color;
+            color: $text_icons;
+            &:hover {
+                cursor: pointer;
+                background-color: $light_primary_color;
+                color: $primary_text;
+            }
+        }
+    }
+    
+    .perfil {
+        grid-area: perfil;
+        border: 1px solid $divider_color;
+        background-color: $dark_primary_color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        img {
+            height: 100px;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+        .containerPerfil {
+            width: 100%;
+            color: $text_icons;
+            margin-left: 10px;
+        }
+    }
+    
+    .contenido {
+        grid-area: contenido;
+        border-top: 4px solid $accent_color;
+        display: flex;
+        flex-direction: column;
+        h1 {
+            align-self: center;
+        }
+        .container3 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            justify-items: center;
+            height: 100%;
+            .card {
+                display: flex;
+                flex-direction: column;
+                margin: 10px;
+                width: 200px;
+                align-content: flex-start;
+                h2 {
+                    background-color: $primary_color;
+                    margin: 0;
+                    color: $text_icons;
+                    padding: 6px;
+                    border-radius: 5px;
+                }
+                p {
+                    margin: 0;
+                    padding-top: 6px;
+                }
+            }
+        }
+    }
+    
+    .pie {
+        grid-area: pie;
+        border: 1px solid black;
+    }
+}
