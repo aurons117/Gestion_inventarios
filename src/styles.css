@@ -65,7 +65,10 @@ body {
 }
 .container .contenido {
   grid-area: contenido;
+  background-color: #ecf0f1;
   border-top: 4px solid #009688;
+  border-right: 4px solid #009688;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
 }
@@ -82,7 +85,7 @@ body {
   display: flex;
   flex-direction: column;
   margin: 10px;
-  width: 200px;
+  width: 80%;
   align-content: flex-start;
 }
 .container .contenido .container3 .card h2 {

@@ -70,7 +70,10 @@ body {
     
     .contenido {
         grid-area: contenido;
+        background-color: $background_content;
         border-top: 4px solid $accent_color;
+        border-right: 4px solid $accent_color;
+        border-radius: 8px;
         display: flex;
         flex-direction: column;
         h1 {
@@ -85,7 +88,7 @@ body {
                 display: flex;
                 flex-direction: column;
                 margin: 10px;
-                width: 200px;
+                width: 80%;
                 align-content: flex-start;
                 h2 {
                     background-color: $primary_color;
