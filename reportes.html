@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gestor Inventarios</title>
+    <link rel="stylesheet" href="src/styles.css">
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+    <script>
+        window.onload = function() {
+        
+        var ventasDia = new CanvasJS.Chart("chartContainerVentasDia", {
+            theme: "light2", // "light1", "light2", "dark1", "dark2"
+            exportEnabled: true,
+            animationEnabled: true,
+            //title: {
+            //    text: "Desktop Browser Market Share in 2016"
+            //},
+            data: [{
+                type: "pie",
+                startAngle: 25,
+                toolTipContent: "<b>{label}</b>: {y}%",
+                showInLegend: "true",
+                legendText: "{label}",
+                indexLabelFontSize: 16,
+                indexLabel: "{label} - {y}%",
+                dataPoints: [
+                    { y: 51.08, label: "Laptops" },
+                    { y: 27.34, label: "Impresoras" },
+                    { y: 10.62, label: "Perifericos" },
+                    { y: 5.02, label: "Antivirus" },
+                    { y: 4.07, label: "Paqueteria" },
+                    { y: 1.22, label: "Desktops" },
+                    { y: 0.44, label: "Consumibles" }
+                ]
+            }]
+        });
+        ventasDia.render();
+
+        var masVendidos = new CanvasJS.Chart("chartContainerMasVendidos", {
+            animationEnabled: true,
+            //title:{
+            //    text: "Server Performance"
+            //},
+            axisX: {
+                title:"Productos"
+            },
+            axisY:{
+                title: "Margen de utilidad"
+            },
+            data: [
+            {
+                type: "scatter",
+                name: "Server Mars",
+                showInLegend: true, 
+                toolTipContent: "<span style=\"color:#C0504E \"><b>{name}</b></span><br/><b> Load:</b> {x} TPS<br/><b> Response Time:</b></span> {y} ms",
+                dataPoints: [
+                    { x: 19, y: 200 },
+                    { x: 27, y: 300 },
+                    { x: 35, y: 330 },
+                    { x: 32, y: 190 },
+                    { x: 29, y: 189 },
+                    { x: 22, y: 150 },
+                    { x: 27, y: 200 },
+                    { x: 26, y: 190 },
+                    { x: 24, y: 225 },
+                    { x: 33, y: 330 },
+                    { x: 34, y: 250 },
+                    { x: 30, y: 120 },
+                    { x: 37, y: 153 },
+                    { x: 24, y: 196 }
+                ]
+            }]
+        });
+        masVendidos.render();
+
+        var chartStock = new CanvasJS.Chart("chartContainerStock", {
+	title: {
+		//text: "Temperature of Each Boiler"
+	},
+	axisY: {
+		title: "Cantidad",
+		//suffix: " °C"
+	},
+	data: [{
+		type: "column",	
+		yValueFormatString: "#,### °C",
+		indexLabel: "{y}",
+		dataPoints: [
+			{ label: "Laptops", y: 206 },
+			{ label: "Impresoras", y: 163 },
+			{ label: "Perifericos", y: 154 },
+			{ label: "Antivirus", y: 176 },
+			{ label: "Paqueteria", y: 184 },
+			{ label: "Desktops", y: 122 }
+		]
+	}]
+    });
+
+    function updateChart() {
+        var boilerColor, deltaY, yVal;
+        var dps = chartStock.options.data[0].dataPoints;
+        for (var i = 0; i < dps.length; i++) {
+            deltaY = Math.round(2 + Math.random() *(-2-2));
+            yVal = deltaY + dps[i].y > 0 ? dps[i].y + deltaY : 0;
+            boilerColor = yVal > 200 ? "#FF2500" : yVal >= 170 ? "#FF6000" : yVal < 170 ? "#6B8E23 " : null;
+            dps[i] = {label: "Boiler "+(i+1) , y: yVal, color: boilerColor};
+        }
+        chartStock.options.data[0].dataPoints = dps; 
+        chartStock.render();
+    };
+    updateChart();
+
+    setInterval(function() {updateChart()}, 500);
+    
+    }
+
+
+    const dataSource = {
+  chart: {
+    caption: "Objetivo de ventas en el periodo",
+    lowerlimit: "0",
+    upperlimit: "100",
+    showvalue: "1",
+    numbersuffix: "%",
+    theme: "fusion",
+    showtooltip: "0"
+  },
+  colorrange: {
+    color: [
+      {
+        minvalue: "0",
+        maxvalue: "50",
+        code: "#F2726F"
+      },
+      {
+        minvalue: "50",
+        maxvalue: "75",
+        code: "#FFC533"
+      },
+      {
+        minvalue: "75",
+        maxvalue: "100",
+        code: "#62B58F"
+      }
+    ]
+  },
+  dials: {
+    dial: [
+      {
+        value: "81"
+      }
+    ]
+  }
+};
+
+FusionCharts.ready(function() {
+  var myChart = new FusionCharts({
+    type: "angulargauge",
+    renderAt: "chart-container",
+    width: "100%",
+    //height: "100%",
+    dataFormat: "json",
+    dataSource
+  }).render();
+});
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header class="perfil">
+            <div class="containerPerfil">
+                <h1>Nombre del usuario</h1>
+                <h2>Tipo de perfil</h2>
+            </div>
+            <img src="https://pngimage.net/wp-content/uploads/2018/06/icono-perfil-png-8.png" alt="Foto del usuario">
+        </header>
+        <section class="logo">
+            <img src="https://static.wixstatic.com/media/2e197e_c7d7218b8f6240f48d16d7b5ab680139.png/v1/fill/w_266,h_266,al_c,q_85,usm_0.66_1.00_0.01/2e197e_c7d7218b8f6240f48d16d7b5ab680139.webp" alt="Logo">
+        </section>
+        <nav class="menu">
+            <div class="menuOption">Inicio</div>
+            <div class="menuOption">Mi cuenta</div>
+            <div class="menuOption">Clientes</div>
+            <div class="menuOption">Productos</div>
+            <div class="menuOption">Proveedores</div>
+            <div class="menuOption">Reportes</div>
+            <div class="menuOption">Usuarios</div>
+            <div class="menuOption">Configuración</div>
+        </nav>
+        <section class="contenido">
+            <h1>Reportes</h1>
+            <div class="container3">
+                <div class="card">
+                    <h2>Ventas del día</h2>
+                    <div id="chartContainerVentasDia" style="height: 370px; width: 100%;"></div>
+                </div>
+
+                <div class="card">
+                    <h2>Productos más vendidos</h2>
+                    <div id="chartContainerMasVendidos" style="height: 370px; width: 100%;"></div>
+                </div>
+
+                <div class="card">
+                    <h2>Stock en el almacen</h2>
+                    <div id="chartContainerStock" style="height: 370px; width: 100;"></div>
+                </div>
+
+                <div class="card">
+                    <h2>Ventas al momento</h2>
+                    <div id="chart-container"></div>
+                </div>
+
+            </div>
+        </section>
+        <footer class="pie">
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li>Copyright Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, autem?</li>
+            </ul>
+        </footer>
+    </div>
+    <script src="src/index.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>
