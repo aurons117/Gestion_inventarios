@@ -1,10 +1,14 @@
 body {
-  font-size: 14px;
+  font-size: 16px;
+}
+
+button {
+  width: 100px;
 }
 
 .container {
   display: grid;
-  grid-template-columns: 0.5fr 3fr;
+  grid-template-columns: 200px 3fr;
   grid-template-rows: 1fr 3fr 0.3fr;
   grid-template-areas: "logo perfil" "menu contenido" "pie pie";
   height: 100vh;
@@ -17,7 +21,7 @@ body {
   align-items: center;
 }
 .container .logo img {
-  height: 100px;
+  height: 120px;
 }
 .container .menu {
   grid-area: menu;
@@ -37,6 +41,7 @@ body {
   border-radius: 5px;
   background-color: #607D8B;
   color: #FFFFFF;
+  text-decoration: none;
 }
 .container .menu .menuOption:hover {
   cursor: pointer;
@@ -73,23 +78,33 @@ body {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  height: 100vh;
 }
 .container .contenido h1 {
   align-self: center;
 }
+.container .contenido select {
+  align-self: flex-end;
+  width: auto;
+  margin-right: 20px;
+}
 .container .contenido .container3 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /*display: grid;
+  grid-template-columns: repeat(2, 1fr);*/
   justify-items: center;
   height: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
 }
 .container .contenido .container3 .card {
   display: flex;
   flex-direction: column;
   margin: 10px;
-  width: 80%;
+  width: 40%;
   align-content: flex-start;
+  margin-bottom: 30px;
+  background-color: white;
+  padding: 5px;
 }
 .container .contenido .container3 .card h2 {
   background-color: #607D8B;

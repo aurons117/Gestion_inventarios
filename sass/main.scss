@@ -2,12 +2,16 @@
 @import "colors";
 
 body {
-    font-size: 14px;
+    font-size: 16px;
+}
+
+button {
+    width: 100px;
 }
 
 .container {
     display: grid;
-    grid-template-columns: 0.5fr 3fr;
+    grid-template-columns: 200px 3fr;
     grid-template-rows: 1fr 3fr 0.3fr;
     grid-template-areas:    "logo perfil"
                             "menu contenido"
@@ -19,7 +23,7 @@ body {
         grid-area: logo;
         @include flex_center;
         img {
-            height: 100px;
+            height: 120px;
         }
     }
 
@@ -39,7 +43,9 @@ body {
             border-radius: 5px;
             background-color: $primary_color;
             color: $text_icons;
-            &:hover {
+            text-decoration: none;
+            
+            &:hover{
                 cursor: pointer;
                 background-color: $light_primary_color;
                 color: $primary_text;
@@ -78,21 +84,31 @@ body {
         display: flex;
         flex-direction: column;
         overflow-y: auto;
-        height: 100vh;
         h1 {
             align-self: center;
         }
+        select {
+            align-self: flex-end;
+            width: auto;
+            margin-right: 20px;
+        }
         .container3 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            /*display: grid;
+            grid-template-columns: repeat(2, 1fr);*/
             justify-items: center;
             height: 100%;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-evenly;
             .card {
                 display: flex;
                 flex-direction: column;
                 margin: 10px;
-                width: 80%;
+                width: 40%;
                 align-content: flex-start;
+                margin-bottom: 30px;
+                background-color: white;
+                padding: 5px;
                 h2 {
                     background-color: $primary_color;
                     margin: 0;
