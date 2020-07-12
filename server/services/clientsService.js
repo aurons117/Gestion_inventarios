@@ -1,11 +1,17 @@
 const path = require('path');
-const mongoose = require('mongoose');
 const { ClientModel } = require(path.join(path.dirname(__dirname) + '/models', 'clientModel.js'));
 
 clientsService = {
-    get: (req, res) => {
-        let list = ["item1", "item2", "item3"];
-        return (res.json(list));
+    get: async (req, res) => {
+        try {
+            const clients = await ClientModel.find();
+            return res.status(200).json(clients);
+        } catch (error) {
+            return res.status(400).json({
+                status: 'fail',
+                message: 'Error retrieving clients from database'
+            });
+        }
     },
     post: async (req, res) => {
         const cliente = new ClientModel({
@@ -16,7 +22,7 @@ clientsService = {
             credito: req.body.credito,
             deudaActual: req.body.deudaActual,
         });
-        
+
         try {
             const doc = await cliente.save();
             console.log(doc);
@@ -28,7 +34,7 @@ clientsService = {
             });
         }
 
-        return res.send('Success creating document on database');
+        return res.status(200).send('Success creating document on database');
     }
 };
 
