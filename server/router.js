@@ -11,13 +11,15 @@ function appRouter() {
 
     // API de clientes
     router.route('/api/clients')
-        .get(clientsService.get)
-        .post(clientsService.post);
+        // Se requiere token y rol de admin para acceder a estos endpoints
+        .get(authService.protect, authService.restrictTo('admin'), clientsService.get)
+        .post(authService.protect, authService.restrictTo('admin'), clientsService.post);
 
     router.route('/api/clients/:id')
-        .get(clientService.get)
-        .put(clientService.put)
-        .delete(clientService.delete);
+        // Un cliente puede ver su información, pero el admin modificarla y borrarla
+        .get(authService.protect, clientService.get)
+        .put(authService.protect, authService.restrictTo('admin'), clientService.put)
+        .delete(authService.protect, authService.restrictTo('admin'), clientService.delete);
 
     // Ruta para registrar nuevos usuarios, regresa un objeto con un token
     router.route('/api/signUp')
