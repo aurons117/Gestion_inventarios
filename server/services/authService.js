@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 const path = require('path');
-const { fail } = require('assert');
 const { UserModel } = require(path.join(path.dirname(__dirname) + '/models', 'userModel.js'));
 
 const createAndSendToken = (user, res) => {
