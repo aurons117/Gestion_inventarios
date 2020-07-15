@@ -1,7 +1,11 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
+const rateLimit = require('express-rate-limit');
 const { appRouter } = require('./router');
 
 // Revisar .env
@@ -22,9 +26,22 @@ mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopol
 const port = process.env.PORT || 3000;
 const app = express();
 
-// Revisar para eliminar - Ya que no se renderea desde express, sino desde React, no se utiliza el body de los request
+// Limitador de requests a la API
+const limiter = rateLimit({
+    max: 100,
+    windowMs: 60 * 60 * 1000,
+    message: 'Demasiados request desde esta IP, intentar en una hora'
+});
+app.use('/api', limiter);
+
+// Parsers de body y cookies
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cookieParser());
+
+// Data Sanitizers
+app.use(mongoSanitize());       // Prevents NoSQL injections
+app.use(xss());         // Prevents html and JS injection
 
 // Serve the static files from the React app
 app.use(express.static(path.join(path.dirname(__dirname), 'client/build')));

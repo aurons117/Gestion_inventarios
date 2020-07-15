@@ -19,14 +19,14 @@ const userSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['visitor', 'user', 'admin'],
-        default: 'visitor'
+        enum: ['user', 'admin'],        // Roles permitidos
+        default: 'user'
     },
     password: {
         type: String,
         required: [true, 'Favor de proporcionar un password correcto'],
         minlength: 8,
-        select: false       // Al hacer una búsqueda, esta opción bloquea el que regrese la contraseña del usuario
+        select: false       // Al hacer una búsqueda, esta opción oculta la contraseña
     },
     passwordConfirmation: {
         type: String,

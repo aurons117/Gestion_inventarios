@@ -11,23 +11,24 @@ function appRouter() {
 
     // API de clientes
     router.route('/api/clients')
-        // Se requiere token y rol de admin para acceder a estos endpoints
+        // Se requiere token en la cookie y rol de admin para acceder a estos endpoints
         .get(authService.protect, authService.restrictTo('admin'), clientsService.get)
         .post(authService.protect, authService.restrictTo('admin'), clientsService.post);
 
     router.route('/api/clients/:id')
-        // Un cliente puede ver su información, pero el admin modificarla y borrarla
+        // Un cliente puede ver su información, pero solo el admin modificarla y borrarla
         .get(authService.protect, clientService.get)
         .put(authService.protect, authService.restrictTo('admin'), clientService.put)
         .delete(authService.protect, authService.restrictTo('admin'), clientService.delete);
 
-    // Ruta para registrar nuevos usuarios, regresa un objeto con un token
+    // Registrar nuevos usuarios, regresa un objeto y el token en la cookie
     router.route('/api/signUp')
         .post(authService.signUp);
 
-    // Ruta para loggear usuarios ya registrados, regresa un objeto con un token
+    // Loggear usuarios ya registrados, regresa un objeto y el token en la cookie
     router.route('/api/login')
         .post(authService.login);
+
 
     // Rutas controladas por react router
     router.route('*')
