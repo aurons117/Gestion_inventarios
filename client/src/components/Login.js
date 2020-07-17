@@ -8,12 +8,13 @@ const Login = () => {
 
 	return (
 		<>
-			<form>
-				<label htmlFor="fname">First name:</label><br />
+			<h1>Iniciar sesión</h1>
+			<form className='loginContainer'>
+				<label htmlFor="fname">Correo electrónico:</label><br />
 				<input type="text" id="fname" name="fname" /><br />
-				<label htmlFor="lname">Last name:</label><br />
-				<input type="text" id="lname" name="lname" /><br /><br />
-				<input type="submit" value="Submit" onClick={submitButton} />
+				<label htmlFor="lname">Contraseña:</label><br />
+				<input type="password" id="lname" name="lname" /><br /><br />
+				<input className='loginButton' type="submit" value="Submit" onClick={submitButton} />
 			</form>
 		</>
 	);
