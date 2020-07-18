@@ -20,8 +20,8 @@ const createAndSendToken = (user, res) => {
 
     return res.status(201).json({
         status: 'Success',
-        message: 'User created/logged',
-        user
+        message: 'User logged',
+        token
     });
 }
 
@@ -58,8 +58,17 @@ const authService = {
             });
         }
         // Validar si existe el usuario y si su contraseña es correcta
-        const user = await UserModel.findOne({ email }).select('+password');    // Buscar mail en base de datos
-        const passValidation = await user.correctPassword(password, user.password);     // Validar password
+        let user;
+        let passValidation
+        try {
+            user = await UserModel.findOne({ email }).select('+password');    // Buscar mail en base de datos
+            passValidation = await user.correctPassword(password, user.password);     // Validar password
+        } catch (error) {
+            return res.status(400).json({
+                status: 'Fail',
+                message: 'Usuario o contraseña incorrectos'
+            });
+        }
 
         if (user === null || !passValidation) {
             return res.status(400).json({
@@ -71,6 +80,13 @@ const authService = {
         // Regresar token al cliente si se valida la autenticación
 
         createAndSendToken(user, res);
+    },
+    logout: async (req, res, next) => {
+        res.clearCookie('jwt');
+        res.status(200).json({
+            status: 'Success',
+            message: 'Sesión terminada'
+        });
     },
     // Utilizamos protect como middleware. En cada solicitud a la API, validamos que tenga token valido
     protect: async (req, res, next) => {
