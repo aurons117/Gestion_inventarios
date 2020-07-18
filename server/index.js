@@ -1,4 +1,5 @@
 const express = require('express');
+// const cors = require('cors');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -38,6 +39,7 @@ app.use('/api', limiter);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
+// app.use(cors());
 
 // Data Sanitizers
 app.use(mongoSanitize());       // Prevents NoSQL injections
@@ -45,6 +47,7 @@ app.use(xss());         // Prevents html and JS injection
 
 // Serve the static files from the React app
 app.use(express.static(path.join(path.dirname(__dirname), 'client/build')));
+
 
 app.use(appRouter());
 

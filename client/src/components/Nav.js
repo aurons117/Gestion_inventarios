@@ -7,15 +7,16 @@ import { ReactComponent as SupplierLogo } from '../styles/img/books.svg';
 import { ReactComponent as ReportLogo } from '../styles/img/pie-chart.svg';
 
 const Nav = () => {
+
 	return (
 		<>
 			<nav>
 				<ul>
-					<li> <HomeLogo className='icon' /> <Link to='/'>Inicio</Link> </li>
-					<li> <SaleLogo className='icon' /> <Link to='/sales'>Registrar venta</Link> </li>
-					<li> <ClientLogo className='icon' /> <Link to='/clients'>Registro de clientes</Link> </li>
-					<li> <SupplierLogo className='icon' /> <Link to='/suppliers'>Registro de proveedores</Link> </li>
-					<li> <ReportLogo className='icon' /> <Link to='/reports'>Generar reporte</Link> </li>
+					<li> <Link to='/'> <HomeLogo className='icon' /> Inicio </Link> </li>
+					<li> <Link to='/sales'> <SaleLogo className='icon' /> Registrar venta</Link> </li>
+					<li> <Link to='/clients'> <ClientLogo className='icon' /> Registro de clientes</Link> </li>
+					<li> <Link to='/suppliers'> <SupplierLogo className='icon' /> Registro de proveedores</Link> </li>
+					<li> <Link to='/reports'> <ReportLogo className='icon' /> Generar reporte</Link> </li>
 				</ul>
 			</nav>
 		</>
