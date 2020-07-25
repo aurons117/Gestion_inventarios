@@ -20,8 +20,7 @@ const createAndSendToken = (user, res) => {
 
     return res.status(201).json({
         status: 'Success',
-        message: 'User logged',
-        token
+        message: 'User logged'
     });
 }
 
@@ -152,6 +151,12 @@ const authService = {
             }
             return next();
         }
+    },
+    validate: async (req, res, next) => {
+        return res.status(200).json({
+            status: 'Sucess',
+            message: 'Validated'
+        });
     }
 };
 

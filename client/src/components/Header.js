@@ -1,11 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { logOut } from '../utils';
 
-const HeaderInfo = () => {
+const HeaderInfo = (props) => {
+    const handleClick = async (event) => {
+        const response = await logOut();
+        console.log(response);
+        document.location = '/';
+    };
+
     return (
         <div className='headerInfo'>
             <img src="./img/logo.jpg" alt="Logo de empresa" />
-            <button><Link to='/login'>Iniciar sesión</Link></button>
+            <button onClick={handleClick}>Cerrar Sesión</button>
         </div>
     );
 };

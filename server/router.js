@@ -61,6 +61,10 @@ function appRouter() {
     router.route('/api/logout')
         .get(authService.protect, authService.logout);
 
+    // Loggear usuarios ya registrados, regresa un objeto y el token en la cookie
+    router.route('/api/validate')
+        .get(authService.protect, authService.validate);
+
     // Rutas controladas por react router
     router.route('*')
         .get((req, res) => {

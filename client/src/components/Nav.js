@@ -7,7 +7,6 @@ import { ReactComponent as SupplierLogo } from '../styles/img/books.svg';
 import { ReactComponent as ReportLogo } from '../styles/img/pie-chart.svg';
 
 const Nav = () => {
-
 	return (
 		<>
 			<nav>
