@@ -1,11 +1,11 @@
 import React from 'react';
 import '../styles/home.css';
 
-const Home = () => {
+const Home = (props) => {
 	return (
 		<>
 			<h1>Inicio</h1>
-			<p>Favor de iniciar sesión</p>
+			<p>Herramienta de gestión de inventarios</p>
 		</>
 	);
 };

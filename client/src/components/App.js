@@ -3,9 +3,11 @@ import { Route, Switch } from 'react-router-dom';
 import Nav from './Nav';
 import HeaderInfo from './Header';
 import Home from './Home';
-import Login from './Login';
 import NotFound from './NotFound';
 import '../styles/index.css';
+import PrivateRoute from './PrivateRoute';
+// import SignIn from './SignIn';
+import Login from './Login';
 
 const App = () => {
 	return (
@@ -14,13 +16,13 @@ const App = () => {
 			<HeaderInfo />
 			<div className='content'>
 				<Switch>
-					<Route path='/' component={Home} exact />
 					<Route path='/login' component={Login} exact />
-					<Route path='*' component={NotFound} />
+					<PrivateRoute path='/' component={Home} exact />
+					<PrivateRoute path='*' component={NotFound} />
 				</Switch>
 			</div>
 		</>
 	);
-};
+}
 
 export default App;
