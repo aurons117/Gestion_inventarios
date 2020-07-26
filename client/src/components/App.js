@@ -6,8 +6,18 @@ import Home from './Home';
 import NotFound from './NotFound';
 import '../styles/index.css';
 import PrivateRoute from './PrivateRoute';
-// import SignIn from './SignIn';
-import Login from './Login';
+import SignIn from './SignIn';
+
+const App2 = () => {
+	return (
+		<>
+			<Switch>
+				<Route path='/login' component={SignIn} exact />
+				<App />
+			</Switch>
+		</>
+	);
+}
 
 const App = () => {
 	return (
@@ -16,7 +26,6 @@ const App = () => {
 			<HeaderInfo />
 			<div className='content'>
 				<Switch>
-					<Route path='/login' component={Login} exact />
 					<PrivateRoute path='/' component={Home} exact />
 					<PrivateRoute path='*' component={NotFound} />
 				</Switch>
@@ -25,4 +34,4 @@ const App = () => {
 	);
 }
 
-export default App;
+export default App2;

@@ -1,5 +1,7 @@
 import React from 'react';
 import { logOut } from '../utils';
+import AppButton from './AppButton';
+
 
 const HeaderInfo = (props) => {
     const handleClick = async (event) => {
@@ -11,7 +13,7 @@ const HeaderInfo = (props) => {
     return (
         <div className='headerInfo'>
             <img src="./img/logo.jpg" alt="Logo de empresa" />
-            <button onClick={handleClick}>Cerrar Sesión</button>
+            <AppButton textButton={'Cerrar Sesión'} handle={handleClick} />
         </div>
     );
 };
