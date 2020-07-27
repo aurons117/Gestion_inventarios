@@ -7,6 +7,8 @@ const { productsService } = require('./services/productsService');
 const { productService } = require('./services/productService');
 const { salesService } = require('./services/salesService');
 const { saleService } = require('./services/saleService');
+const { suppliersService } = require('./services/suppliersService');
+const { supplierService } = require('./services/supplierService');
 
 const router = express.Router();
 
@@ -48,6 +50,18 @@ function appRouter() {
         .get(authService.protect, saleService.get)
         .put(authService.protect, authService.restrictTo('admin'), saleService.put)
         .delete(authService.protect, authService.restrictTo('admin'), saleService.delete);
+
+    /////////////////////////// API de proveedores ///////////////////////////
+    router.route('/api/suppliers')
+        // Se requiere token en la cookie y rol de admin para acceder a estos endpoints
+        .get(authService.protect, suppliersService.get)
+        .post(authService.protect, suppliersService.post);
+
+    router.route('/api/suppliers/:id')
+        // Un cliente puede ver su información, pero solo el admin modificarla y borrarla
+        .get(authService.protect, supplierService.get)
+        .put(authService.protect, authService.restrictTo('admin'), supplierService.put)
+        .delete(authService.protect, authService.restrictTo('admin'), supplierService.delete);
 
     // Registrar nuevos usuarios, regresa un objeto y el token en la cookie
     router.route('/api/signUp')
