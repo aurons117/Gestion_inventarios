@@ -7,6 +7,7 @@ import NotFound from './NotFound';
 import '../styles/index.css';
 import PrivateRoute from './PrivateRoute';
 import SignIn from './SignIn';
+import Clients from './Clients';
 
 const App2 = () => {
 	return (
@@ -27,6 +28,8 @@ const App = () => {
 			<div className='content'>
 				<Switch>
 					<PrivateRoute path='/' component={Home} exact />
+					<PrivateRoute path='/clients' component={Clients} />
+					{/* <PrivateRoute path='/suppliers' render={() => <h1>Hola mundo</h1>} exact /> */}
 					<PrivateRoute path='*' component={NotFound} />
 				</Switch>
 			</div>

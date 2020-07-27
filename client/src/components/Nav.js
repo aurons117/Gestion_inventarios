@@ -25,7 +25,6 @@ const Nav = () => {
 
 	return (
 		<>
-			<nav>
 				<div className={classes.root}>
 					<List component="nav" aria-label="main mailbox folders">
 						<Link to='/'><ListItem button>
@@ -38,7 +37,7 @@ const Nav = () => {
 							<ListItemIcon>
 								<MonetizationOnOutlinedIcon />
 							</ListItemIcon>
-							<ListItemText primary="Ventas" />
+							<ListItemText primary="Venta" />
 						</ListItem></Link>
 						<Link to='/clients'><ListItem button>
 							<ListItemIcon>
@@ -61,7 +60,8 @@ const Nav = () => {
 					</List>
 					<Divider />
 				</div>
-			</nav>
+			{/* <nav className='principal'>
+			</nav> */}
 		</>
 	);
 };
