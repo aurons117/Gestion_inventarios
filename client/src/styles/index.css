@@ -78,4 +78,5 @@ nav a {
     display: flex;
     flex-flow: column wrap;
     align-items: center;
+    background-color: #f5f5f5;
 }

@@ -34,7 +34,9 @@ clientsService = {
             });
         }
 
-        return res.status(200).send('Success creating document on database');
+        return res.status(200).json({
+            status: 'success'
+        });
     }
 };
 

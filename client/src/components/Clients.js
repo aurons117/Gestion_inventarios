@@ -1,23 +1,54 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ClientsMenu from './ClientsMenu';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import ClientsSearch from './ClientsSearch';
+import { makeStyles } from '@material-ui/core/styles';
+import ClientsTable from './ClientsTable';
+import { fetchData } from '../utils';
+import ClientsAdd from './ClientsAdd';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+        width: '80%'
+    }
+}));
 
 function Clients() {
+    const classes = useStyles();
     const { path } = useRouteMatch();
+
+    const [clients, setClients] = useState([]);
+    const [search, setSearch] = useState('');
+    // const [filteredClients, setFilteredClients] = useState();
+
+    useEffect(() => {
+        async function getClients() {
+            const data = await fetchData('/api/clients');
+            setClients(data);
+        }
+        getClients();
+    }, []);
+
+    const filteredClients = clients.filter(client =>
+        client.nombre.toLowerCase().includes(search.toLowerCase())
+    );
+
     return (
-        <>
+
+        <div className={classes.root}>
             <h1>Clientes</h1>
             <ClientsMenu />
             <Switch>
                 <Route path={path} exact >
-                    <ClientsSearch />
+                    <p>Seleccionar una opción</p>
                 </Route>
                 <Route path={`${path}/search`} exact >
-                    <h2>Buscar</h2>
+                    <ClientsSearch clients={clients} setSearch={setSearch} search={search} />
+                    <ClientsTable data={filteredClients} />
                 </Route>
                 <Route path={`${path}/add`} exact >
-                    <h2>Añadir</h2>
+                    <ClientsAdd />
                 </Route>
                 <Route path={`${path}/edit`} exact >
                     <h2>Editar</h2>
@@ -26,7 +57,7 @@ function Clients() {
                     <h2>Eliminar</h2>
                 </Route>
             </Switch>
-        </>
+        </div>
     );
 }
 
