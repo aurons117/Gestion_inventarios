@@ -1,26 +1,31 @@
 /* eslint-disable no-use-before-define */
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
+import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { fetchData } from '../utils';
+// import { fetchData } from '../utils';
 
-export default function ClientsSearch() {
-    const [clients, setClients] = useState(['test1', 'test2']);
+export default function ClientsSearch({ setSearch, clients }) {
+    // const [clients, setClients] = useState(['test1', 'test2']);
 
-    useEffect(() => {
-        async function getClients() {
-            const data = await fetchData('/api/clients', 'GET');
-            console.log(data);
-            setClients(data);
-        }
-        getClients();
-    }, []);
+    // useEffect(() => {
+    //     async function getClients() {
+    //         const data = await fetchData('/api/clients', 'GET');
+    //         setClients(data);
+    //     }
+    //     getClients();
+    // }, []);
+
+    function handleChange(e) {
+        setSearch(e.target.value);
+    }
 
     return (
-        <div style={{ width: 300 }}>
+        <div style={{ width: '30%' }}>
             <Autocomplete
                 freeSolo
                 id="free-solo-2-demo"
+                onKeyUp={handleChange}
                 disableClearable
                 options={clients.map((client) => client.nombre)}
                 renderInput={(params) => (
