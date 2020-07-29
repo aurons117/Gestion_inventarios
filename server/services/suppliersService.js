@@ -1,5 +1,4 @@
-const path = require('path');
-const { SupplierModel } = require(path.join(path.dirname(__dirname) + '/models', 'SupplierModel.js'));
+const supplierModel = require('../models/supplierModel');
 
 suppliersService = {
     get: async (req, res) => {
