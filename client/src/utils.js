@@ -26,6 +26,27 @@ export async function postData(url, reqData) {
     return res.status;
 }
 
+export async function putData(url, reqData) {
+    const res = await fetch(url, {
+        method: 'PUT',
+        body: JSON.stringify(reqData),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    return res.status;
+}
+
+export async function deleteData(url) {
+    const res = await fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    return res.status;
+}
+
 export async function isLogin() {
     const url = '/api/validate';
     let res = await fetch(url, {

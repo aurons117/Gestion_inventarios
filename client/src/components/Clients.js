@@ -6,6 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import ClientsTable from './ClientsTable';
 import { fetchData } from '../utils';
 import ClientsAdd from './ClientsAdd';
+import ClientsModify from './ClientsModify';
+import ClientsDelete from './ClientsDelete';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,7 +33,7 @@ function Clients() {
     }, []);
 
     const filteredClients = clients.filter(client =>
-        client.nombre.toLowerCase().includes(search.toLowerCase())
+        client.rfc.toLowerCase().includes(search.toLowerCase())
     );
 
     return (
@@ -44,17 +46,19 @@ function Clients() {
                     <p>Seleccionar una opción</p>
                 </Route>
                 <Route path={`${path}/search`} exact >
-                    <ClientsSearch clients={clients} setSearch={setSearch} search={search} />
+                    <ClientsSearch clients={clients} setSearch={setSearch} searching={'rfc'} />
                     <ClientsTable data={filteredClients} />
                 </Route>
                 <Route path={`${path}/add`} exact >
                     <ClientsAdd />
                 </Route>
                 <Route path={`${path}/edit`} exact >
-                    <h2>Editar</h2>
+                    <ClientsSearch clients={clients} setSearch={setSearch} searching={'rfc'} />
+                    <ClientsModify client={filteredClients[0]} />
                 </Route>
                 <Route path={`${path}/delete`} exact >
-                    <h2>Eliminar</h2>
+                    <ClientsSearch clients={clients} setSearch={setSearch} searching={'rfc'} />
+                    <ClientsDelete client={filteredClients[0]} />
                 </Route>
             </Switch>
         </div>

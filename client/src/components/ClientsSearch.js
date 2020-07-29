@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 // import { fetchData } from '../utils';
 
-export default function ClientsSearch({ setSearch, clients, value }) {
+export default function ClientsSearch({ setSearch, clients, searching }) {
 
     function handleChange(e) {
         setSearch(e.target.value);
@@ -17,14 +17,17 @@ export default function ClientsSearch({ setSearch, clients, value }) {
                 freeSolo
                 id="free-solo-2-demo"
                 disableClearable
-                onKeyUp={handleChange}
-                options={clients.map((client) => client.nombre)}
+                onKeyDown={handleChange}
+                options={clients.map((client) => {
+                    return client[searching];
+                })}
                 renderInput={(params) => (
                     <TextField
                         {...params}
-                        label="Buscar Cliente"
+                        label="Buscar Cliente por RFC"
                         margin="normal"
                         variant="outlined"
+                        autoFocus
                         InputProps={{ ...params.InputProps, type: 'search' }}
                     />
                 )}
