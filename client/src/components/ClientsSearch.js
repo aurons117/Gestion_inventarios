@@ -5,16 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 // import { fetchData } from '../utils';
 
-export default function ClientsSearch({ setSearch, clients }) {
-    // const [clients, setClients] = useState(['test1', 'test2']);
-
-    // useEffect(() => {
-    //     async function getClients() {
-    //         const data = await fetchData('/api/clients', 'GET');
-    //         setClients(data);
-    //     }
-    //     getClients();
-    // }, []);
+export default function ClientsSearch({ setSearch, clients, searching }) {
 
     function handleChange(e) {
         setSearch(e.target.value);
@@ -25,15 +16,18 @@ export default function ClientsSearch({ setSearch, clients }) {
             <Autocomplete
                 freeSolo
                 id="free-solo-2-demo"
-                onKeyUp={handleChange}
                 disableClearable
-                options={clients.map((client) => client.nombre)}
+                onKeyDown={handleChange}
+                options={clients.map((client) => {
+                    return client[searching];
+                })}
                 renderInput={(params) => (
                     <TextField
                         {...params}
-                        label="Buscar Cliente"
+                        label="Buscar Cliente por RFC"
                         margin="normal"
                         variant="outlined"
+                        autoFocus
                         InputProps={{ ...params.InputProps, type: 'search' }}
                     />
                 )}
@@ -41,68 +35,3 @@ export default function ClientsSearch({ setSearch, clients }) {
         </div>
     );
 }
-
-// import React, { useState, useEffect } from 'react';
-// import { fetchData } from '../utils';
-// import { makeStyles } from '@material-ui/core/styles';
-// import InputLabel from '@material-ui/core/InputLabel';
-// import FormControl from '@material-ui/core/FormControl';
-// import Select from '@material-ui/core/Select';
-
-// const useStyles = makeStyles((theme) => ({
-//     formControl: {
-//         margin: theme.spacing(1),
-//         minWidth: 120,
-//     },
-//     selectEmpty: {
-//         marginTop: theme.spacing(2),
-//     },
-// }));
-
-// export default function ClientsSearch() {
-//     const classes = useStyles();
-//     const [state, setState] = React.useState({
-//         age: '',
-//         name: 'hai',
-//     });
-
-//     const handleChange = (event) => {
-//         const name = event.target.name;
-//         setState({
-//             ...state,
-//             [name]: event.target.value,
-//         });
-//     };
-
-//     const [clients, setClients] = useState(['test1', 'test2']);
-
-//     useEffect(() => {
-//         async function getClients() {
-//             const data = await fetchData('/api/clients', 'GET');
-//             setClients(data);
-//         }
-//         getClients();
-//     }, []);
-
-//     return (
-//         <div>
-//             <FormControl variant="filled" className={classes.formControl}>
-//                 <InputLabel htmlFor="filled-age-native-simple">Cliente</InputLabel>
-//                 <Select
-//                     native
-//                     value={state.age}
-//                     onChange={handleChange}
-//                     inputProps={{
-//                         name: 'age',
-//                         id: 'filled-age-native-simple',
-//                     }}
-//                 >
-//                     <option aria-label="None" value="" />
-//                     {
-//                         clients.map((client) => <option value={client.nombre}>{client.nombre}</option>)
-//                     }
-//                 </Select>
-//             </FormControl>
-//         </div>
-//     );
-// }
