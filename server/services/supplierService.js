@@ -1,4 +1,5 @@
-const supplierModel = require('../models/supplierModel');
+const path = require('path');
+const { SupplierModel } = require(path.join(path.dirname(__dirname) + '/models', 'supplierModel.js'));
 
 const supplierService = {
     get: async (req, res) => {
@@ -34,7 +35,7 @@ const supplierService = {
         } catch (error) {
             return res.status(400).json({
                 status: 'fail',
-                message: 'Error deleting',
+                message: 'Error deleting!',
                 error
             });
         }
