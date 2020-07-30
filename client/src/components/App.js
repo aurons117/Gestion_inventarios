@@ -8,6 +8,8 @@ import '../styles/index.css';
 import PrivateRoute from './PrivateRoute';
 import SignIn from './SignIn';
 import Clients from './Clients';
+import Reports from './GraficaVentasDiarias';
+import Suppliers from './Suppliers';
 
 const App2 = () => {
 	return (
@@ -30,6 +32,8 @@ const App = () => {
 					<PrivateRoute path='/' component={Home} exact />
 					<PrivateRoute path='/clients' component={Clients} />
 					{/* <PrivateRoute path='/suppliers' render={() => <h1>Hola mundo</h1>} exact /> */}
+					<PrivateRoute path='/suppliers' component={Suppliers} />
+					<PrivateRoute path='/reports' component={Reports} />
 					<PrivateRoute path='*' component={NotFound} />
 				</Switch>
 			</div>
