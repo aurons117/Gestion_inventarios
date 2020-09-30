@@ -1,0 +1,17 @@
+
+#root{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template: repeat(14, 1fr) / repeat(14, 1fr);
+}
+
+.layout__login {
+    grid-column: 1 / 15;
+    grid-row: 1 / 15;
+}
+
+.headerInfo{
+    grid-column: 1 / 15;
+    grid-row: 1 / 2;
+}

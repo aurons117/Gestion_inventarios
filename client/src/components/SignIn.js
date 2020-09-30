@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SignIn() {
+export default function SignIn({ history }) {
     const classes = useStyles();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -48,24 +48,30 @@ export default function SignIn() {
                     'Content-Type': 'application/json'
                 }
             });
-            const data = await res.json();
-            console.log(data.status);
-            document.location = '/';
+            // const data = await res.json();
+            if (res.status === 201) {
+                history.push('/');
+            } else {
+                alert("Acceso denegado");
+                setEmail("");
+                setPassword("");
+            }
+
         } catch (error) {
             console.log("Error");
         }
     };
 
     return (
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="xs" className="layout__login">
             <CssBaseline />
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Sign in
-        </Typography>
+                    Autenticación
+                </Typography>
                 <form className={classes.form} noValidate>
                     <TextField
                         variant="outlined"
@@ -73,10 +79,11 @@ export default function SignIn() {
                         required
                         fullWidth
                         id="email"
-                        label="Email Address"
+                        label="Correo electrónico"
                         name="email"
                         autoComplete="email"
                         autoFocus
+                        value={email}
                         onChange={e => setEmail(e.target.value)}
                     />
                     <TextField
@@ -85,10 +92,11 @@ export default function SignIn() {
                         required
                         fullWidth
                         name="password"
-                        label="Password"
+                        label="Contraseña"
                         type="password"
                         id="password"
                         autoComplete="current-password"
+                        value={password}
                         onChange={e => setPassword(e.target.value)}
                     />
                     <Button
@@ -98,7 +106,7 @@ export default function SignIn() {
                         color="primary"
                         className={classes.submit}
                         onClick={submitButton}>
-                        Sign In
+                        Acceder
                     </Button>
 
                 </form>

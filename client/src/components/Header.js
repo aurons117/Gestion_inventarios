@@ -1,13 +1,16 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { logOut } from '../utils';
 import AppButton from './AppButton';
 
 
-const HeaderInfo = (props) => {
+const HeaderInfo = () => {
+    const history = useHistory();
+    
     const handleClick = async (event) => {
         const response = await logOut();
         console.log(response);
-        document.location = '/';
+        history.push('/login');
     };
 
     return (

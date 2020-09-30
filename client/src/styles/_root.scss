@@ -1,23 +1,5 @@
-body{
-    margin: 0;
-    font-size: 14px;
-}
-
-#root{
-    height: 100vh;
-    width: 100vw;
-    display: grid;
-    grid-template: repeat(14, 1fr) / repeat(14, 1fr);
-}
-
-#root main{
-    grid-column: 1 / 15;
-    grid-row: 1 / 15;
-}
 
 .headerInfo{
-    grid-column: 1 / 15;
-    grid-row: 1 / 2;
     display: flex;
     justify-content: space-between;
     align-items: center;

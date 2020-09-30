@@ -13,8 +13,6 @@ const useStyles = makeStyles((theme) => ({
 export default function AppButton({ textButton, handle }) {
     const classes = useStyles();
 
-
-
     return (
         <div className={classes.root}>
             <Button variant="contained" color="primary" onClick={handle}>{textButton}</Button>

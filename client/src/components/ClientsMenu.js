@@ -22,7 +22,7 @@ export default function ClientsMenu() {
         <div className={classes.root}>
             <ButtonGroup size="large" color="primary" aria-label="large outlined primary button group">
                 <Button component={Link} to='/clients/search'>Buscar</Button>
-                <Button component={Link} to='/clients/add'>Añadir</Button>
+                <Button component={Link} to='/clients/add'>Agregar</Button>
                 <Button component={Link} to='/clients/edit'>Editar</Button>
                 <Button component={Link} to='/clients/delete'>Eliminar</Button>
             </ButtonGroup>

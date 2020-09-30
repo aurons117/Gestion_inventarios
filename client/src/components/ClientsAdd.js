@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -23,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ClientsAdd() {
+    const history = useHistory();
     const classes = useStyles();
 
     const [nombre, setNombre] = useState();
@@ -40,7 +42,7 @@ export default function ClientsAdd() {
         const res = await postData('/api/clients', dataSubmit);
         if (res === 200) {
             alert('Se creó documento');
-            document.location = '/clients';
+            history.push('/clients');
         } else {
             alert('Falla en la creación de documento');
         }

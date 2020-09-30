@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -12,56 +12,52 @@ import ContactsOutlinedIcon from '@material-ui/icons/ContactsOutlined';
 import LocalShippingOutlinedIcon from '@material-ui/icons/LocalShippingOutlined';
 import AssessmentOutlinedIcon from '@material-ui/icons/AssessmentOutlined';
 
-const useStyles = makeStyles((theme) => ({
-	root: {
-		width: '100%',
-		maxWidth: 360,
-		backgroundColor: theme.palette.background.paper,
-	},
-}));
+// const useStyles = makeStyles((theme) => ({
+// 	root: {
+// 		width: '100%',
+// 		maxWidth: 360,
+// 		backgroundColor: theme.palette.background.paper,
+// 	},
+// }));
 
 const Nav = () => {
-	const classes = useStyles();
+	// const classes = useStyles();
 
 	return (
 		<>
-				<div className={classes.root}>
-					<List component="nav" aria-label="main mailbox folders">
-						<Link to='/'><ListItem button>
-							<ListItemIcon>
-								<HomeOutlinedIcon />
-							</ListItemIcon>
-							<ListItemText primary="Inicio" />
-						</ListItem></Link>
-						<Link to='/sales'><ListItem button>
-							<ListItemIcon>
-								<MonetizationOnOutlinedIcon />
-							</ListItemIcon>
-							<ListItemText primary="Venta" />
-						</ListItem></Link>
-						<Link to='/clients'><ListItem button>
-							<ListItemIcon>
-								<ContactsOutlinedIcon />
-							</ListItemIcon>
-							<ListItemText primary="Clientes" />
-						</ListItem></Link>
-						<Link to='/suppliers'><ListItem button>
-							<ListItemIcon>
-								<LocalShippingOutlinedIcon />
-							</ListItemIcon>
-							<ListItemText primary="Proveedores" />
-						</ListItem></Link>
-						<Link to='/reports'><ListItem button>
-							<ListItemIcon>
-								<AssessmentOutlinedIcon />
-							</ListItemIcon>
-							<ListItemText primary="Reportes" />
-						</ListItem></Link>
-					</List>
-					<Divider />
-				</div>
-			{/* <nav className='principal'>
-			</nav> */}
+			<List component="nav" aria-label="main mailbox folders">
+				<Link to='/'>
+					<ListItem button>
+						<ListItemIcon> <HomeOutlinedIcon /> </ListItemIcon>
+						<ListItemText primary="Inicio" />
+					</ListItem>
+				</Link>
+				<Link to='/sales'>
+					<ListItem button>
+						<ListItemIcon> <MonetizationOnOutlinedIcon /></ListItemIcon>
+						<ListItemText primary="Venta" />
+					</ListItem>
+				</Link>
+				<Link to='/clients'>
+					<ListItem button>
+						<ListItemIcon> <ContactsOutlinedIcon /> </ListItemIcon>
+						<ListItemText primary="Clientes" />
+					</ListItem>
+				</Link>
+				<Link to='/suppliers'>
+					<ListItem button>
+						<ListItemIcon> <LocalShippingOutlinedIcon /> </ListItemIcon>
+						<ListItemText primary="Proveedores" />
+					</ListItem>
+				</Link>
+				<Link to='/reports'>
+					<ListItem button>
+						<ListItemIcon> <AssessmentOutlinedIcon /> </ListItemIcon>
+						<ListItemText primary="Reportes" />
+					</ListItem>
+				</Link>
+			</List>
+			<Divider />
 		</>
 	);
 };

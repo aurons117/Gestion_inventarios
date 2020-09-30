@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { deleteData } from '../utils';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -23,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ClientsDelete({ client }) {
     const classes = useStyles();
+    const history = useHistory();
 
     const submitHandle = async (e) => {
         e.preventDefault();
@@ -36,7 +38,7 @@ export default function ClientsDelete({ client }) {
             const res = await deleteData(`/api/clients/${client._id}`);
             if (res === 200) {
                 alert('Se eliminó documento');
-                document.location = '/clients/delete';
+                history.push('/clients/delete');
             } else {
                 alert('Falla en la creación de documento');
             }
