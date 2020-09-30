@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { putData } from '../utils';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -24,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ClientsModify({ client }) {
     const classes = useStyles();
+    const history = useHistory();
 
     const [nombre, setNombre] = useState();
     const [rfc, setRFC] = useState();
@@ -46,7 +48,7 @@ export default function ClientsModify({ client }) {
         const res = await putData(`/api/clients/${client._id}`, dataSubmit);
         if (res === 200) {
             alert('Se creó documento');
-            document.location = '/clients/search';
+            history.push('/clients/search');
         } else {
             alert('Falla en la creación de documento');
         }
