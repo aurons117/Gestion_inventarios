@@ -1,5 +1,4 @@
 import React from 'react';
-// import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -12,19 +11,13 @@ import ContactsOutlinedIcon from '@material-ui/icons/ContactsOutlined';
 import LocalShippingOutlinedIcon from '@material-ui/icons/LocalShippingOutlined';
 import AssessmentOutlinedIcon from '@material-ui/icons/AssessmentOutlined';
 
-// const useStyles = makeStyles((theme) => ({
-// 	root: {
-// 		width: '100%',
-// 		maxWidth: 360,
-// 		backgroundColor: theme.palette.background.paper,
-// 	},
-// }));
-
 const Nav = () => {
-	// const classes = useStyles();
 
 	return (
-		<>
+		<div className='navbar'>
+			<img src="/img/foto-perfil.jpg" alt="Foto de perfil" />
+			<h3>Nombre de usuario</h3>
+			<Divider />
 			<List component="nav" aria-label="main mailbox folders">
 				<Link to='/'>
 					<ListItem button>
@@ -58,7 +51,7 @@ const Nav = () => {
 				</Link>
 			</List>
 			<Divider />
-		</>
+		</div>
 	);
 };
 

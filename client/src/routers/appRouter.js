@@ -16,7 +16,6 @@ const AppRouter = () => {
 				<Switch>
 					<PrivateRoute path='/' component={Home} exact />
 					<PrivateRoute path='/clients' component={Clients} />
-					{/* <PrivateRoute path='/suppliers' render={() => <h1>Hola mundo</h1>} exact /> */}
 					<PrivateRoute path='*' component={NotFound} />
 				</Switch>
 			</div>

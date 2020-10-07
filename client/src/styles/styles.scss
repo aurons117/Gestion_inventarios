@@ -1,8 +1,11 @@
-@import "./root";
 @import "./colors";
 @import "./layout";
+@import "./header";
+@import "./navbar";
+@import "./content";
 
 body{
     margin: 0;
     font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
 }
