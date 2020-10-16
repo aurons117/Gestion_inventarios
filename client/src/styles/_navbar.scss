@@ -1,0 +1,21 @@
+.navbar {
+    background-color: $secondary-color;
+    text-align: center;
+
+    * {
+        color: lighten($color: $secondary-color, $amount: 40);
+        text-decoration: none;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    hr {
+        // height: 0.1rem;
+        background-color: darken($color: $secondary-color, $amount: 10);
+    }
+
+    img {
+        width: 5rem;
+        border-radius: 10rem;
+        margin-top: 2rem;
+    }
+}

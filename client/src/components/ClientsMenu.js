@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
+// import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 
@@ -9,10 +9,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        '& > *': {
-            margin: theme.spacing(1),
-        },
-    },
+    }
 }));
 
 export default function ClientsMenu() {
@@ -20,12 +17,10 @@ export default function ClientsMenu() {
 
     return (
         <div className={classes.root}>
-            <ButtonGroup size="large" color="primary" aria-label="large outlined primary button group">
-                <Button component={Link} to='/clients/search'>Buscar</Button>
-                <Button component={Link} to='/clients/add'>Agregar</Button>
-                <Button component={Link} to='/clients/edit'>Editar</Button>
-                <Button component={Link} to='/clients/delete'>Eliminar</Button>
-            </ButtonGroup>
+            <Button component={Link} to='/clients/search' className="navLinks">Buscar</Button>
+            <Button component={Link} to='/clients/add' className="navLinks">Agregar</Button>
+            <Button component={Link} to='/clients/edit' className="navLinks">Editar</Button>
+            <Button component={Link} to='/clients/delete' className="navLinks">Eliminar</Button>
         </div>
     );
 }

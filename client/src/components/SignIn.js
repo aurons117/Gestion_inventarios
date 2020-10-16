@@ -70,7 +70,7 @@ export default function SignIn({ history }) {
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Autenticación
+                    Sistema de gestión de inventarios
                 </Typography>
                 <form className={classes.form} noValidate>
                     <TextField
