@@ -1,27 +1,31 @@
-
 #root {
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
-    display: grid;
-    grid-template: repeat(14, 1fr) / repeat(14, 1fr);
-}
 
-.layout__login {
-    grid-column: 1 / 15;
-    grid-row: 1 / 15;
-}
-
-.headerInfo {
-    grid-column: 3 / 15;
-    grid-row: 1 / 2;
+    display: flex;
 }
 
 .navbar {
-    grid-column: 1 / 3;
-    grid-row: 1 / 15;
+    height: 100vh;
+    min-width: auto;
 }
 
-.content{
-    grid-column: 3 / 15;
-    grid-row: 2 / 15;
+.right_content {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.headerInfo {
+    height: auto;
+}
+
+.app_content {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    color: #3c4359;
 }

@@ -1,22 +1,28 @@
-
-.headerInfo{
+.headerInfo {
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: $secondary-color;
-    
+
     border-bottom: 1px solid lighten($color: $primary-color, $amount: 35);
 
     img {
         margin-left: 1rem;
+        max-height: 2.5rem;
+        max-width: 5rem;
+        filter: invert(23%) sepia(11%) saturate(1375%) hue-rotate(188deg) brightness(100%) contrast(88%);
     }
 }
 
+.quit_button {
+    height: 2.5rem;
+}
+
 .header_quit {
-    height: 100%;
-    width: 8rem;
+    // height: 100%;
+    // width: 8rem;
     background-color: $secondary-color;
-    
+
     * {
         color: lighten($color: $secondary-color, $amount: 40);
     }

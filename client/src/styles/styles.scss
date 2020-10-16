@@ -3,9 +3,22 @@
 @import "./header";
 @import "./navbar";
 @import "./content";
+@import "./home";
 
 body{
     margin: 0;
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 1.4rem;
+}
+
+h2 {
+    font-size: 1.2rem;
+}
+
+p {
+    font-size: 1rem;
 }

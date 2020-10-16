@@ -8,7 +8,7 @@ import ClientsAdd from './ClientsAdd';
 import ClientsModify from './ClientsModify';
 import ClientsDelete from './ClientsDelete';
 
-function Clients() {
+function Suppliers() {
     const { path } = useRouteMatch();
 
     const [clients, setClients] = useState([]);
@@ -30,8 +30,8 @@ function Clients() {
     return (
         <>
             <div className="content_header">
-                <h1>Clientes</h1>
-                <p>Gestiona tus clientes. Revisa su estado actual de deuda, historial de compras y más</p>
+                <h1>Proveedores</h1>
+                <p>Gestiona tus proveedores. Revisa cuánto material has comprado y cuanto debes pagar</p>
             </div>
             <div className="container">
                 <div className="content_container">
@@ -89,4 +89,4 @@ function Clients() {
     );
 }
 
-export default Clients;
+export default Suppliers;

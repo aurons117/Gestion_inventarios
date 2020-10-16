@@ -1,4 +1,60 @@
+// .content {
+//     border: 1px solid black;
+//     background-color: cadetblue;
 
-#homeImage {
-    width: 10rem;
+//     padding: 2rem;
+// }
+
+.content_header {
+    padding: 1rem;
+
+    * {
+        margin: 0px;
+    }
+}
+
+.container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-top: 1px solid darken($color: $background_color, $amount: 10);
+    background-color: $background_color;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.content_container {
+    height: 100%;
+    width: 60%;
+    background-color: white;
+    border-radius: 0.3rem;
+
+    // .content_title {
+    //     background-color: yellowgreen;
+    // }
+}
+
+.actions_container {
+    height: 100%;
+    width: 25%;
+    max-width: 15rem;
+    // background-color: coral;
+
+    a {
+        // background-color: $secondary_color;
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        background-color: $complementary_color1;
+        color: white;
+
+        &:hover {
+            background-color: darken($color: $complementary_color1, $amount: 5);
+        }
+        &:nth-child(1) {
+    
+        }
+    }
 }
